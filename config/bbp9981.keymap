@@ -162,6 +162,13 @@
             bindings = <&none &kp BSLH &kp BSLH &kp A &kp P &kp C &kp H &kp S &kp H &kp A &kp V &kp P &kp F &kp I &kp L &kp N0 &kp N1>;
             label = "APCH";
         };
+
+        CAD: CAD {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kt RC(RA(DELETE))>;
+            label = "CAD";
+        };
     };
 
     keymap {
@@ -193,9 +200,9 @@
             bindings = <
 &msc SCRL_UP  &msc SCRL_DOWN
 &bt BT_SEL 0  &bt BT_SEL 1    &td0         &bt BT_SEL 2     &bt BT_SEL 3
-&none         &kp UP          &kp C_EJECT  &sys_reset       &ext_power EP_TOG  &none              &kp LT       &kp GT           &kp PIPE      &kp KP_EQUAL
-&kp LEFT      &kp DOWN        &kp RIGHT    &none            &kp BSLH           &kp AMPS           &kp LBRC     &kp RBRC         &kp CARET     &kp BSPC
-&kp LSHFT     &none           &none        &rgb_ug RGB_BRD  &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC   &rgb_ug RGB_BRI  &td_boot_out  &kp ENTER
+&epw          &kp UP          &kp C_EJECT  &sys_reset       &ext_power EP_TOG  &gp                &kp LT       &kp GT           &kp PIPE      &kp KP_EQUAL
+&kp LEFT      &kp DOWN        &kp RIGHT    &apch            &kp BSLH           &kp AMPS           &kp LBRC     &kp RBRC         &kp CARET     &kp BSPC
+&kp LSHFT     &eaqin          &eapw        &rgb_ug RGB_BRD  &bl BL_DEC         &rgb_ug RGB_TOG    &bl BL_INC   &rgb_ug RGB_BRI  &td_boot_out  &kp ENTER
                               &kp LCTRL                     &kp LALT           &kp SPACE          &to DEFAULT  &to DEFAULT
             >;
         };
@@ -203,11 +210,11 @@
         media_layer {
             bindings = <
 &none   &none
-&none   &none  &none  &none  &none
-&none   &none  &eqin  &epw   &none  &none    &none        &none        &none        &none
-&eaqin  &eapw  &none  &none  &gp    &none    &jonisam     &JJ34jj      &none        &none
-&none   &none  &none  &apch  &none  &none    &JJ62jj      &none        &to DEFAULT  &none
-               &none         &none  &none    &to DEFAULT  &to DEFAULT
+&CAD    &epw   &mkp LCLK  &eaqin  &eapw
+&none   &none  &eqin      &epw    &none  &none    &none        &none        &none        &none
+&eaqin  &eapw  &none      &none   &gp    &none    &jonisam     &JJ34jj      &none        &kp BSPC
+&none   &none  &none      &apch   &none  &none    &JJ62jj      &none        &to DEFAULT  &kp RETURN
+               &kp TAB            &none  &none    &to DEFAULT  &to DEFAULT
             >;
         };
     };
